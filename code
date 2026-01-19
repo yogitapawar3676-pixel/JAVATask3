@@ -1,0 +1,40 @@
+import java.util.Scanner;
+
+public class StudentResultSystem {
+
+    public static String assignGrade(int percentage) {
+        switch (percentage / 10) {
+            case 10: case 9: return "A";
+            case 8: return "B";
+            case 7: return "C";
+            case 6: return "D";
+            default: return "F";
+        }
+    }
+
+    public static void processStudent(int marks) {
+        if (marks < 0 || marks > 100) {
+            System.out.println("Invalid marks! Try again.");
+            return;
+        }
+        int percentage = marks;
+        String grade = assignGrade(percentage);
+        System.out.println("Percentage: " + percentage + "% | Grade: " + grade);
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        while (true) {
+            System.out.print("Enter marks (-1 to exit): ");
+            int marks = sc.nextInt();
+
+            if (marks == -1) {
+                System.out.println("Exiting... Thank you!");
+                break;
+            }
+
+            processStudent(marks);
+        }
+    }
+}
